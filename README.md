@@ -8,7 +8,13 @@ This code is built on top of the [graphviz](https://pypi.org/project/graphviz/) 
 ## Example
 
 We can draw diagrams like
-![erd](fig/erd.png)
+![erd](https://media.githubusercontent.com/media/mashi/graphviz-erd/main/fig/erd.png)
+<!--
+Link to the image because it was not showing in pypi.org.
+To obtain the link:
+1. Go to the image address in the Github repository.
+2. right click on the image and select 'Copy Image Link'
+-->
 
 using the code:
 ```
