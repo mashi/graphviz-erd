@@ -4,5 +4,13 @@
   ],
   "pre-commit": {
     "enabled": true
-  }
+  },
+  "dependencyDashboard": true,
+  "branchConcurrentLimit": 50,
+  "prConcurrentLimit": 50,
+  "automerge": true,
+  "automergeType": "branch",
+  "schedule": [
+    "on the last day of the month"
+  ]
 }
