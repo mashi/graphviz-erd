@@ -3,25 +3,6 @@ from typing import Optional
 import graphviz
 
 
-def process_label(text: Optional[str]) -> Optional[str]:
-    """Insert brackets around text.
-
-    Parameters
-    ----------
-    text
-        Text to be processed.
-
-    Returns
-    -------
-    Optional[str]
-        Processed text.
-    """
-    if text is not None:
-        return f"<{text}>"
-    else:
-        return None
-
-
 class ERD:
     """
     Parameters
@@ -38,6 +19,25 @@ class ERD:
     def __init__(self, gr: graphviz.Graph) -> None:
         self.gr = gr
 
+    @staticmethod
+    def _process_label(text: Optional[str]) -> Optional[str]:
+        """Insert brackets around text.
+
+        Parameters
+        ----------
+        text
+            Text to be processed.
+
+        Returns
+        -------
+        Optional[str]
+            Processed text.
+        """
+        if text is not None:
+            return f"<{text}>"
+        else:
+            return None
+
     def entity(self, node_name: str, node_label: Optional[str] = None):
         """This method declares an entity.
 
@@ -49,7 +49,7 @@ class ERD:
         node_label
             Name that will appear at the node.
         """
-        self.gr.node(node_name, process_label(node_label), shape="box")
+        self.gr.node(node_name, self._process_label(node_label), shape="box")
 
     def weak_entity(self, node_name: str, node_label: Optional[str] = None):
         """This method declares a weak entity.
@@ -64,7 +64,7 @@ class ERD:
         """
         self.gr.node(
             node_name,
-            process_label(node_label),
+            self._process_label(node_label),
             shape="box",
             peripheries="2",
         )
@@ -83,7 +83,9 @@ class ERD:
             Name that will appear at the node.
         """
 
-        self.gr.node(node_name, process_label(node_label), shape="Msquare")
+        self.gr.node(
+            node_name, self._process_label(node_label), shape="Msquare"
+        )
 
     def attribute(self, node_name: str, node_label: Optional[str] = None):
         """This method declares an attribute.
@@ -96,7 +98,9 @@ class ERD:
         node_label
             Name that will appear at the node.
         """
-        self.gr.node(node_name, process_label(node_label), shape="ellipse")
+        self.gr.node(
+            node_name, self._process_label(node_label), shape="ellipse"
+        )
 
     def multivalue(self, node_name: str, node_label: Optional[str] = None):
         """This method declares a multivalued attribute.
@@ -112,7 +116,7 @@ class ERD:
         # self.gr.node(node_name, node_label, {"shape": "ellipse", "peripheries": "2"})
         self.gr.node(
             node_name,
-            process_label(node_label),
+            self._process_label(node_label),
             shape="ellipse",
             peripheries="2",
         )
@@ -162,7 +166,7 @@ class ERD:
         """
         self.gr.node(
             node_name,
-            process_label(node_label),
+            self._process_label(node_label),
             shape="ellipse",
             style="dashed",
         )
@@ -206,10 +210,10 @@ class ERD:
     def relation(
         self,
         relation_name: str,
-        attr1: str,
-        attr2: str,
-        label_attr1: Optional[str] = None,
-        label_attr2: Optional[str] = None,
+        ent1: str,
+        ent2: str,
+        label_ent1: Optional[str] = None,
+        label_ent2: Optional[str] = None,
         identifying: str = "no",
     ):
         """This method declares the relationship between attributes.
@@ -218,13 +222,13 @@ class ERD:
         ----------
         relation_name
             Text that will appear at the node.
-        attr1
+        ent1
             The first entity.
-        attr2
+        ent2
             The second entity.
-        label_attr1
+        label_ent1
             Text that will appear between the relationship diamond and the first entity.
-        label_attr2
+        label_ent2
             Text that will appear between the relationship diamond and the second entity.
         identifying
             No: single lines. Yes: double lines.
@@ -235,8 +239,8 @@ class ERD:
             lines = "2"
         self.gr.node(relation_name, shape="diamond", peripheries=lines)
         # e.edge('C-I', 'institute', label='1', len='1.00')
-        self.gr.edge(attr1, relation_name, label=process_label(label_attr1))
-        self.gr.edge(attr2, relation_name, label=process_label(label_attr2))
+        self.gr.edge(ent1, relation_name, label=self._process_label(label_ent1))
+        self.gr.edge(ent2, relation_name, label=self._process_label(label_ent2))
 
 
 if __name__ == "__main__":
