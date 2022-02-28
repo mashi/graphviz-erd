@@ -1,3 +1,5 @@
+[![Documentation Status](https://readthedocs.org/projects/graphviz-erd/badge/?version=latest)](https://graphviz-erd.readthedocs.io/en/latest/?badge=latest)
+
 # graphviz-erd
 
 Draw Entity Relationship Diagrams (ERD) with python and graphviz.
@@ -62,4 +64,13 @@ source .venv/bin/activate
 pip install wheel
 pip install -r requirements.txt
 pre-commit install
+```
+
+To build the documentation locally, install and call sphinx:
+```
+python3 -m venv .venv
+source .venv/bin/activate
+pip install wheel
+pip install -r docs/requirements-docs.txt
+sphinx-build -E -b html docs/source docs/_build
 ```

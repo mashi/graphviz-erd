@@ -5,6 +5,9 @@
   "pre-commit": {
     "enabled": true
   },
+  "pip_requirements": {
+    "fileMatch": ["docs/requirements-docs", "requirements$"]
+  },
   "dependencyDashboard": true,
   "branchConcurrentLimit": 50,
   "prConcurrentLimit": 50,
