@@ -65,3 +65,27 @@ jobs:
           pip install -r requirements.txt
           python -m build
           python -m twine upload dist/*
+
+  docs:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: docs
+        run: |
+          pip install wheel
+          pip install -r docs/requirements-docs.txt
+          sphinx-build -E -b html docs/source docs/_build
+      - name: compress
+        run: |
+          apt update && apt install zip -y
+          zip -r docs.zip docs/_build
+          ls
+      - name: store artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: docs
+          path: docs.zip
+          retention-days: 1
