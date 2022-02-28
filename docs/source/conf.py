@@ -40,6 +40,10 @@ templates_path = ["_templates"]
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns: List[str] = []
 
+# 'description' – Show typehints as content of the function or method. The
+# typehints of overloaded functions or methods will still be represented
+# in the signature.
+autodoc_typehints = "description"
 
 # -- Options for HTML output -------------------------------------------------
 
