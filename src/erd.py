@@ -133,6 +133,31 @@ class ERD:
             peripheries="2",
         )
 
+    @staticmethod
+    def _check_node_label(
+        node_name: str, node_label: Optional[str] = None
+    ) -> str:
+        """Returns the node_name if the node_label is None. Otherwise, the
+        node_name will be used as the label for the graphviz node.
+
+        Parameters
+        ----------
+        node_name
+            Name of the node.
+        Node label
+            Name that will appear at the node.
+
+        Returns
+        -------
+        str
+            The string that will be used as label.
+        """
+        if node_label is None:
+            text = node_name
+        else:
+            text = node_label
+        return text
+
     def key(self, node_name: str, node_label: Optional[str] = None):
         """This method declares a key attribute.
 
@@ -144,10 +169,7 @@ class ERD:
         node_label
             Name that will appear at the node.
         """
-        if node_label is None:
-            text = node_name
-        else:
-            text = node_label
+        text = self._check_node_label(node_name, node_label)
         self.gr.node(node_name, self._str_key(text), shape="ellipse")
 
     @staticmethod
@@ -157,11 +179,12 @@ class ERD:
         Parameters
         ----------
         label
-            Label to processed.
+            Label to be processed.
 
         Returns
         -------
-        Processed label.
+        str
+            Processed label.
         """
         return f"<<u>{label}</u>>"
 
@@ -176,10 +199,7 @@ class ERD:
         node_label
             Name that will appear at the node.
         """
-        if node_label is None:
-            text = node_name
-        else:
-            text = node_label
+        text = self._check_node_label(node_name, node_label)
         self.gr.node(node_name, label=self._str_weak_key(text), shape="ellipse")
 
     @staticmethod
@@ -189,11 +209,12 @@ class ERD:
         Parameters
         ----------
         label
-            Label to processed.
+            Label to be processed.
 
         Returns
         -------
-        Processed label.
+        str
+            Processed label.
         """
         return f"""<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="0">
     <TR>

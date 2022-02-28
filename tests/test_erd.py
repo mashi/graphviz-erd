@@ -32,6 +32,20 @@ class TestErd(unittest.TestCase):
         print(calculated)
         self.assertEqual(calculated, answer)
 
+    def test_check_node_label_none(self):
+        node_name = "nodename"
+        node_label = None
+        answer = node_name
+        calculated = ERD._check_node_label(node_name, node_label)
+        self.assertEqual(calculated, answer)
+
+    def test_check_node_label_str(self):
+        node_name = "nodename"
+        node_label = "node label"
+        answer = node_label
+        calculated = ERD._check_node_label(node_name, node_label)
+        self.assertEqual(calculated, answer)
+
     def test_entity(self):
         obj = ERD()
         name = "entity1"
@@ -56,7 +70,7 @@ class TestErd(unittest.TestCase):
         answer = f"{name} [shape=Msquare]"
         self.assertIn(answer, calculated)
 
-    def test_attirbute(self):
+    def test_attribute(self):
         obj = ERD()
         name = "attribute"
         obj.attribute(name)
@@ -90,6 +104,10 @@ class TestErd(unittest.TestCase):
         answer_shape = "shape=ellipse"
         answer_label = ERD._str_weak_key(name)
         self.assertIn(answer_shape, calculated)
+        print("answer")
+        print(answer_label)
+        print("calculated")
+        print(calculated)
         self.assertIn(answer_label, calculated)
 
     def test_derived(self):
