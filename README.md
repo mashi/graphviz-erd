@@ -1,3 +1,4 @@
+[![codecov](https://codecov.io/gh/mashi/graphviz-erd/branch/main/graph/badge.svg?token=MR7OATF18B)](https://codecov.io/gh/mashi/graphviz-erd)
 [![Documentation Status](https://readthedocs.org/projects/graphviz-erd/badge/?version=latest)](https://graphviz-erd.readthedocs.io/en/latest/?badge=latest)
 
 # graphviz-erd
