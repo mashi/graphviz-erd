@@ -57,7 +57,6 @@ class ERD:
         ----------
         node_name
             Name of the node.
-
         node_label
             Name that will appear at the node.
         """
@@ -70,7 +69,6 @@ class ERD:
         ----------
         node_name
             Name of the node.
-
         node_label
             Name that will appear at the node.
         """
@@ -90,7 +88,6 @@ class ERD:
         ----------
         node_name
             Name of the node.
-
         node_label
             Name that will appear at the node.
         """
@@ -106,7 +103,6 @@ class ERD:
         ----------
         node_name
             Name of the node.
-
         node_label
             Name that will appear at the node.
         """
@@ -121,7 +117,6 @@ class ERD:
         ----------
         node_name
             Name of the node.
-
         node_label
             Name that will appear at the node.
         """
@@ -144,7 +139,7 @@ class ERD:
         ----------
         node_name
             Name of the node.
-        Node label
+        node_label
             Name that will appear at the node.
 
         Returns
@@ -165,7 +160,6 @@ class ERD:
         ----------
         node_name
             Name of the node.
-
         node_label
             Name that will appear at the node.
         """
@@ -195,7 +189,6 @@ class ERD:
         ----------
         node_name
             Name of the node.
-
         node_label
             Name that will appear at the node.
         """
@@ -229,7 +222,6 @@ class ERD:
         ----------
         node_name
             Name of the node.
-
         node_label
             Name that will appear at the node.
         """
