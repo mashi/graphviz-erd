@@ -1,3 +1,5 @@
+[![Documentation Status](https://readthedocs.org/projects/graphviz-erd/badge/?version=latest)](https://graphviz-erd.readthedocs.io/en/latest/?badge=latest)
+
 # graphviz-erd
 
 Draw Entity Relationship Diagrams (ERD) with python and graphviz.
