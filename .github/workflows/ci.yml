@@ -28,6 +28,24 @@ jobs:
           black --check src/
           black --check tests/
 
+  coverage:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+      - name: coverage
+        run: |
+          pip install wheel
+          pip install -r requirements.txt
+          coverage run -m unittest discover -b
+      - name: "Upload coverage to Codecov"
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+
   test-and-build:
     runs-on: ubuntu-20.04
     strategy:
