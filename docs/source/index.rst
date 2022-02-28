@@ -10,6 +10,7 @@ Welcome to graphviz-erd's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   autodoc-erd
 
 
 Indices and tables
