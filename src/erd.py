@@ -7,8 +7,12 @@ class ERD:
     """
     Parameters
     ----------
-    gr
-        A object from the graphviz.Graph class.
+    filename
+        Name of the generated dot code and image file.
+    engine
+        Specify the dot engine used to generate the image.
+    image_format
+        The image extension.
 
     Attributes
     ----------
@@ -16,8 +20,16 @@ class ERD:
         Graphviz object.
     """
 
-    def __init__(self, gr: graphviz.Graph) -> None:
-        self.gr = gr
+    def __init__(
+        self,
+        filename: str = "erd",
+        engine: str = "dot",
+        image_format: str = "png",
+    ) -> None:
+        print(format)
+        self.gr = graphviz.Graph(
+            "ER", filename=filename, engine=engine, format=image_format
+        )
 
     @staticmethod
     def _process_label(text: Optional[str]) -> Optional[str]:
@@ -153,6 +165,42 @@ class ERD:
         """
         return f"<<u>{label}</u>>"
 
+    def weak_key(self, node_name: str, node_label: Optional[str] = None):
+        """This method declares a weak key attribute.
+
+        Parameters
+        ----------
+        node_name
+            Name of the node.
+
+        node_label
+            Name that will appear at the node.
+        """
+        if node_label is None:
+            text = node_name
+        else:
+            text = node_label
+        self.gr.node(node_name, label=self._str_weak_key(text), shape="ellipse")
+
+    @staticmethod
+    def _str_weak_key(label: str) -> str:
+        """String processing for weak key attributes.
+
+        Parameters
+        ----------
+        label
+            Label to processed.
+
+        Returns
+        -------
+        Processed label.
+        """
+        return f"""<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="0">
+    <TR>
+        <TD COLSPAN="1" SIDES="B" STYLE="dashed">{label}</TD>
+    </TR>
+    </TABLE>>"""
+
     def derived(self, node_name: str, node_label: Optional[str] = None):
         """This method declares a derived attribute.
 
@@ -170,42 +218,6 @@ class ERD:
             shape="ellipse",
             style="dashed",
         )
-
-    def weak_key(self, node_name: str, node_label: Optional[str] = None):
-        """This method declares a weak key attribute.
-
-        Parameters
-        ----------
-        node_name
-            Name of the node.
-
-        node_label
-            Name that will appear at the node.
-        """
-        if node_label is None:
-            text = node_name
-        else:
-            text = node_label
-        self.gr.node(node_name, label=self._weak_key(text), shape="ellipse")
-
-    @staticmethod
-    def _weak_key(label: str) -> str:
-        """String processing for weak key attributes.
-
-        Parameters
-        ----------
-        label
-            Label to processed.
-
-        Returns
-        -------
-        Processed label.
-        """
-        return f"""<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="0">
-    <TR>
-        <TD COLSPAN="1" SIDES="B" STYLE="dashed">{label}</TD>
-    </TR>
-    </TABLE>>"""
 
     def relation(
         self,
@@ -244,8 +256,7 @@ class ERD:
 
 
 if __name__ == "__main__":
-    gr = graphviz.Graph("ER", filename="erd", engine="dot", format="png")
-    obj = ERD(gr)
+    obj = ERD()
 
     # node name and node label
     obj.entity("entity1", "entity 1")
