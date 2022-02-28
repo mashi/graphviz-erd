@@ -1,4 +1,25 @@
+from typing import Optional
+
 import graphviz
+
+
+def process_label(text: str) -> Optional[str]:
+    """Insert brackets around text.
+
+    Parameters
+    ----------
+    text
+        Text to be processed.
+
+    Returns
+    -------
+    str
+        Processed text.
+    """
+    if text is not None:
+        return f"<{text}>"
+    else:
+        return None
 
 
 class ERD:
@@ -12,35 +33,28 @@ class ERD:
     def __init__(self, gr) -> None:
         self.gr = gr
 
-    @staticmethod
-    def process_label(str):
-        if str is not None:
-            return f"<{str}>"
-        else:
-            return None
-
     def entity(self, node_name="course", node_label=None):
-        self.gr.node(node_name, self.process_label(node_label), shape="box")
+        self.gr.node(node_name, process_label(node_label), shape="box")
 
     def weak_entity(self, node_name, node_label=None):
         self.gr.node(
             node_name,
-            self.process_label(node_label),
+            process_label(node_label),
             shape="box",
             peripheries="2",
         )
 
     def associative_entity(self, node_name, node_label=None):
-        self.gr.node(node_name, self.process_label(node_label), shape="Msquare")
+        self.gr.node(node_name, process_label(node_label), shape="Msquare")
 
     def attribute(self, node_name, node_label=None):
-        self.gr.node(node_name, self.process_label(node_label), shape="ellipse")
+        self.gr.node(node_name, process_label(node_label), shape="ellipse")
 
     def multivalue(self, node_name, node_label=None):
         # self.gr.node(node_name, node_label, {"shape": "ellipse", "peripheries": "2"})
         self.gr.node(
             node_name,
-            self.process_label(node_label),
+            process_label(node_label),
             shape="ellipse",
             peripheries="2",
         )
@@ -59,7 +73,7 @@ class ERD:
     def derived(self, node_name, node_label=None):
         self.gr.node(
             node_name,
-            self.process_label(node_label),
+            process_label(node_label),
             shape="ellipse",
             style="dashed",
         )
@@ -100,12 +114,8 @@ class ERD:
             lines = "2"
         self.gr.node(relation_name, shape="diamond", peripheries=lines)
         # e.edge('C-I', 'institute', label='1', len='1.00')
-        self.gr.edge(
-            attr1, relation_name, label=self.process_label(label_attr1)
-        )
-        self.gr.edge(
-            attr2, relation_name, label=self.process_label(label_attr2)
-        )
+        self.gr.edge(attr1, relation_name, label=process_label(label_attr1))
+        self.gr.edge(attr2, relation_name, label=process_label(label_attr2))
 
 
 if __name__ == "__main__":
