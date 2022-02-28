@@ -130,6 +130,14 @@ class TestErd(unittest.TestCase):
         self.assertIn(answer_connection1, calculated)
         self.assertIn(answer_connection2, calculated)
 
+    def test_relation_identifying(self):
+        obj = ERD()
+        name = "relationship"
+        obj.relation(name, "ent1", "ent2", identifying="yes")
+        answer = "peripheries=2"
+        calculated = obj.gr.source
+        self.assertIn(answer, calculated)
+
 
 if __name__ == "__main__":
     unittest.main()
