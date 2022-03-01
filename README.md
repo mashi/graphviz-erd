@@ -1,3 +1,6 @@
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+[![github-actions](https://github.com/mashi/codecov-validator/actions/workflows/ci.yml/badge.svg)](https://github.com/mashi/graphviz-erd/actions)
 [![codecov](https://codecov.io/gh/mashi/graphviz-erd/branch/main/graph/badge.svg?token=MR7OATF18B)](https://codecov.io/gh/mashi/graphviz-erd)
 [![Documentation Status](https://readthedocs.org/projects/graphviz-erd/badge/?version=latest)](https://graphviz-erd.readthedocs.io/en/latest/?badge=latest)
 
