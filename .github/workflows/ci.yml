@@ -121,3 +121,4 @@ jobs:
           make install
           make docs
           make tests
+          make build
