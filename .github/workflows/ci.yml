@@ -109,7 +109,9 @@ jobs:
           path: docs.zip
           retention-days: 1
 
+  # check if the makefile recipes are valid
   makefile:
+    needs: [test-and-build, docs]
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
