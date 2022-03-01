@@ -61,20 +61,26 @@ using the code:
 
 ## Instructions (Development)
 
-Assuming a linux environment (Ubuntu), to develop inside a virtual environment using git hooks:
+The code was developed inside a virtual environment using git hooks. To facilitate the process,
+assuming a linux environment (Ubuntu), some recipes with makefile are available.
+
+To install all the dependencies and to configure the git hooks:
 ```
-python3 -m venv .venv
-source .venv/bin/activate
-pip install wheel
-pip install -r requirements.txt
-pre-commit install
+make install
 ```
 
-To build the documentation locally, install and call sphinx:
+To build the documentation locally calling sphinx:
 ```
-python3 -m venv .venv
-source .venv/bin/activate
-pip install wheel
-pip install -r docs/requirements-docs.txt
-sphinx-build -E -b html docs/source docs/_build
+make docs
+```
+To access the generated documentation, open the file `docs/_build/index.html'.
+
+To execute tests:
+```
+make tests
+```
+
+To build the python package:
+```
+make build
 ```
