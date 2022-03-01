@@ -111,7 +111,7 @@ jobs:
 
   # check if the makefile recipes are valid
   makefile:
-    needs: [test-and-build, docs]
+    # needs: [test-and-build, docs] # commented because the serial execution slowed down the CI
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
