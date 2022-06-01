@@ -1,4 +1,4 @@
-build==0.7.0
+build==0.8.0
 coverage==6.3.2
 flake8==4.0.1
 graphviz==0.20
