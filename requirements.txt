@@ -1,5 +1,5 @@
 build==0.8.0
-coverage==6.4.2
+coverage==6.4.4
 flake8==4.0.1
 graphviz==0.20.1
 pre-commit==2.20.0
