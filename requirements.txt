@@ -1,6 +1,6 @@
 build==0.8.0
 coverage==6.4.4
-flake8==4.0.1
+flake8==5.0.4
 graphviz==0.20.1
 pre-commit==2.20.0
 twine==4.0.1
