@@ -3,4 +3,4 @@ coverage==7.5.4
 flake8==7.0.0
 graphviz==0.20.3
 pre-commit==3.7.1
-twine==5.1.0
+twine==5.1.1
