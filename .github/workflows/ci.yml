@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
         with:
-          python-version: '3.14'
+          python-version: '3.15'
       - name: code formatter
         run: |
           pip install wheel
@@ -34,7 +34,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
         with:
-          python-version: '3.14'
+          python-version: '3.15'
       - name: coverage
         run: |
           pip install wheel
@@ -74,7 +74,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
         with:
-          python-version: '3.14'
+          python-version: '3.15'
       - name: deploy
         env:
           TWINE_USERNAME: ${{ secrets.PYPI_USER }}
@@ -91,7 +91,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
         with:
-          python-version: '3.14'
+          python-version: '3.15'
       - name: docs
         run: |
           pip install wheel
@@ -117,7 +117,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
         with:
-          python-version: '3.14'
+          python-version: '3.15'
       - name: makefile recipes
         run: |
           make install
